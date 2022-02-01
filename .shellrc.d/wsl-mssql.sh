@@ -5,8 +5,9 @@ MSSQLDATA="$HOME/.mssqldb"
 MSSQLIMAGE="mcr.microsoft.com/mssql/server:2019-latest"
 MSSQLNAME="mssqldb"
 
-if ! podman ps --format "{{.Names}}" | rg -q "^${MSSQLNAME}$"; then
-	podman rm -fi "$MSSQLNAME"
+if ! podman exec -it mssqldb id >/dev/null 2>&1 ; then
+#if ! podman ps --format "{{.Names}}" | rg -q "^${MSSQLNAME}$"; then
+	podman rm -fi "$MSSQLNAME" >/dev/null 2>&1
 	cuid=$(podman run -it --entrypoint id --rm $MSSQLIMAGE -u | rg -o '\d+')
 
 	sqldirs=(
