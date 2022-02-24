@@ -1,9 +1,20 @@
 #!/bin/sh
 
-MSSQLDATA="$HOME/.mssqldb"
+export MSSQL_CLI_SERVER="localhost"
+export MSSQL_CLI_USER="sa"
+export MSSQL_CLI_DATABASE="Testerton"
+export MSSQLDATA="$HOME/.mssqldb"
+export MSSQLIMAGE="mcr.microsoft.com/mssql/server:2019-latest"
+export MSSQLNAME="mssqldb"
+export MSSQL_SCRIPTER_CONNECTION_STRING="Data Source=$MSSQL_CLI_SERVER;Initial Catalog=$MSSQL_CLI_DATABASE;User ID=$MSSQL_CLI_USER;Password=$MSSQL_CLI_PASSWORD"
+export MSSQLTOOLSSERVICE_PATH="$HOME/src/sqltoolsservice/"
 
-MSSQLIMAGE="mcr.microsoft.com/mssql/server:2019-latest"
-MSSQLNAME="mssqldb"
+export SQLCMDUSER="$MSSQL_CLI_USER"
+export SQLCMDPASSWORD="$MSSQL_CLI_PASSWORD"
+export SQLCMDSERVER="$MSSQL_CLI_SERVER"
+export SQLCMDDBNAME="$MSSQL_CLI_DATABASE"
+
+addpath /opt/mssql-tools/bin/
 
 if ! podman exec -it mssqldb id >/dev/null 2>&1 ; then
 #if ! podman ps --format "{{.Names}}" | rg -q "^${MSSQLNAME}$"; then
