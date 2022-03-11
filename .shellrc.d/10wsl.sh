@@ -10,6 +10,8 @@ if [[ -z "$XDG_RUNTIME_DIR" ]]; then
   fi
 fi
 
+PROMPT_COMMAND=${PROMPT_COMMAND:+"$PROMPT_COMMAND; "}'printf "\e]9;9;%s\e\\" "$(wslpath -w "$PWD")"'
+
 WINHOSTS="/mnt/c/Windows/System32/drivers/etc/hosts"
 ip=$(ip addr show label eth0 | rg -ow 'inet ([^/]+)' -r '$1')
 
