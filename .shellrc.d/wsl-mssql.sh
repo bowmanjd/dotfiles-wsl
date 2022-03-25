@@ -16,6 +16,8 @@ export SQLCMDDBNAME="$MSSQL_CLI_DATABASE"
 
 addpath /opt/mssql-tools/bin/
 
+export CUSTOMER=$(sqlcmd -W -h -1 -Q "SET NOCOUNT ON; SELECT TOP 1 Name FROM bCompany")
+
 if ! podman exec -it mssqldb id >/dev/null 2>&1 ; then
 #if ! podman ps --format "{{.Names}}" | rg -q "^${MSSQLNAME}$"; then
 	podman rm -fi "$MSSQLNAME" >/dev/null 2>&1
