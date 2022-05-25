@@ -24,3 +24,4 @@ if ! rg -q --crlf "$ip" /mnt/c/Windows/System32/drivers/etc/hosts; then
 fi
 
 unset ip
+
