@@ -1,20 +1,17 @@
 #!/bin/sh
 
-export MSSQL_CLI_SERVER="localhost"
-export MSSQL_CLI_USER="sa"
-export MSSQL_CLI_DATABASE="Testerton"
-export MSSQLDATA="$HOME/.mssqldb"
-export MSSQLIMAGE="mcr.microsoft.com/mssql/server:2019-latest"
-export MSSQLNAME="mssqldb"
-export MSSQL_SCRIPTER_CONNECTION_STRING="Data Source=$MSSQL_CLI_SERVER;Initial Catalog=$MSSQL_CLI_DATABASE;User ID=$MSSQL_CLI_USER;Password=$MSSQL_CLI_PASSWORD"
+export SQLSERVER=127.0.0.1
+export SQLPORT=11443
 export MSSQLTOOLSSERVICE_PATH="$HOME/src/sqltoolsservice/"
 
-export SQLCMDUSER="$MSSQL_CLI_USER"
-export SQLCMDPASSWORD="$MSSQL_CLI_PASSWORD"
-export SQLCMDSERVER="$MSSQL_CLI_SERVER"
-export SQLCMDDBNAME="$MSSQL_CLI_DATABASE"
+export SQLCMDSERVER="$SQLSERVER,$SQLPORT"
+export SQLCMDUSER="sa"
+export SQLCMDPASSWORD="$CARGAS_PASSWORD"
+export SQLCMDDBNAME="CargasEnergy"
 
-addpath /opt/mssql-tools/bin/
+export MSSQL_SCRIPTER_CONNECTION_STRING="Data Source=$SQLCMDSERVER;Initial Catalog=$SQLCMDDBNAME;User ID=$SQLCMDUSER;Password=$SQLCMDPASSWORD"
+
+addpath /opt/mssql-tools18/bin/
 
 # export CUSTOMER=$(sqlcmd -l 1 -W -h -1 -Q "SET NOCOUNT ON; SELECT TOP 1 Name FROM bCompany")
 
