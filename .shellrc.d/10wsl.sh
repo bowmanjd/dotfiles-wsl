@@ -24,6 +24,14 @@ fi
 
 PROMPT_COMMAND=${PROMPT_COMMAND:+"$PROMPT_COMMAND; "}'printf "\e]9;9;%s\e\\" "$(wslpath -w "$PWD")"'
 
+
+export GIT_CONFIG_COUNT=2
+export GIT_CONFIG_KEY_0=user.signingkey
+export GIT_CONFIG_VALUE_0=5B9B18A4E30AE070
+export GIT_CONFIG_KEY_1=user.email
+export GIT_CONFIG_VALUE_1=jbowmancargas@users.noreply.github.com
+
+
 # WINHOSTS="/mnt/c/Windows/System32/drivers/etc/hosts"
 # ip=$(ip addr show label eth0 | rg -ow 'inet ([^/]+)' -r '$1')
 # 
