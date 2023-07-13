@@ -22,14 +22,14 @@ if [ ! -S "$DOCKER_SOCK" ]; then
 		cd "$OLDPWD"
 fi
 
-PROMPT_COMMAND=${PROMPT_COMMAND:+"$PROMPT_COMMAND; "}'printf "\e]9;9;%s\e\\" "$(wslpath -w "$PWD")"'
+PROMPT_COMMAND=${PROMPT_COMMAND:+"$PROMPT_COMMAND; "}'printf "\e]9;9;%s\e\\" "$(wslpath -w "$PWD")"; printf "\033]0;$TITLE\a"'
 
 
 export GIT_CONFIG_COUNT=2
 export GIT_CONFIG_KEY_0=user.signingkey
 export GIT_CONFIG_VALUE_0=5B9B18A4E30AE070
 export GIT_CONFIG_KEY_1=user.email
-export GIT_CONFIG_VALUE_1=jbowmancargas@users.noreply.github.com
+export GIT_CONFIG_VALUE_1=jbowman@cargas.com
 
 
 # WINHOSTS="/mnt/c/Windows/System32/drivers/etc/hosts"
